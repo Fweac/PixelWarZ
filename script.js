@@ -140,6 +140,14 @@ game.addEventListener('mousemove', function(event) {
 
     // Décallage du curseur pour qu'il soit au centre du pixel
     cursor.style.left = cursor.offsetLeft + (cellWidth / 2) + 'px';
+
+    // Si le curseur est sur un pixel noir, la bordure du curseur est blanche
+    if (ctx.getImageData(cursor.offsetLeft - game.offsetLeft, cursor.offsetTop - game.offsetTop, 1, 1).data[0] === 0 && ctx.getImageData(cursor.offsetLeft - game.offsetLeft, cursor.offsetTop - game.offsetTop, 1, 1).data[1] === 0 && ctx.getImageData(cursor.offsetLeft - game.offsetLeft, cursor.offsetTop - game.offsetTop, 1, 1).data[2] === 0 || ctx.getImageData(cursor.offsetLeft - game.offsetLeft, cursor.offsetTop - game.offsetTop, 1, 1).data[0] === 128 && ctx.getImageData(cursor.offsetLeft - game.offsetLeft, cursor.offsetTop - game.offsetTop, 1, 1).data[1] === 0 && ctx.getImageData(cursor.offsetLeft - game.offsetLeft, cursor.offsetTop - game.offsetTop, 1, 1).data[2] === 128) {
+        cursor.style.borderColor = 'white';
+    }
+    else {
+        cursor.style.borderColor = 'black';
+    }
 })
 
 
